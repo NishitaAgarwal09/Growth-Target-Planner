@@ -1,0 +1,60 @@
+# Leadership insights shown under the top belt. Edit the wording freely; the app reads this
+# file every time the page refreshes. Each insight has a short title (the finding) and one
+# sentence (what it means or what to do). The app decides WHEN each one appears and works out
+# the numbers; this file only holds the words.
+#
+# Words in {curly brackets} are filled in by the app. Always available:
+#   {output} onboardings   {Output} Onboardings   {team} advisors   {team_one} advisor
+# Each insight below lists its own extra words.
+
+# Which insights to show, in this order (at most 6 appear). Remove a line to hide one.
+insight_order: [outlook_short, outlook_met, trend, best_lever, no_easy_lever, risk,
+                growth_driver, mix, team_short, team_target, team_ok]
+
+insights:
+  # {pct_of_target} {expected} {target} {gap}
+  outlook_short:
+    title: "Plan reaches {pct_of_target} of target"
+    text: "Expected {expected} vs target {target}: {gap} short."
+  outlook_met:
+    title: "Plan meets the target"
+    text: "Expected {expected} vs target {target}."
+
+  # The rate that fell most in the data. {rate} {first} {last} {first_month} {worth}
+  trend:
+    title: "{rate} fell from {first} to {last} since {first_month}"
+    text: "Back at the {first_month} level, it would add about {worth} {output} next month."
+
+  # The quickest single lever (already reached in a recent month). {lever} {current} {required} {best} {gap}
+  best_lever:
+    title: "Quickest route: {lever} to {required}"
+    text: "It reached {best} recently; on its own this closes the {gap} gap."
+  no_easy_lever:
+    title: "No single lever closes the gap"
+    text: "Each lever would need a level never reached recently. Combine levers or reset the target."
+
+  # Growth planned above any recent month. {risk_share} {names} {total_effect}
+  risk:
+    title: "{risk_share} of the planned uplift is untested"
+    text: "{names} are planned above any recent month."
+
+  # The biggest single driver of the plan. {top_input} {top_effect} {top_share} {total_effect}
+  growth_driver:
+    title: "{top_share} of the uplift comes from {top_input}"
+    text: "The plan adds {total_effect} {output} vs last month's rates; {top_input} gives {top_effect}."
+
+  # The weakest source. {weak} {strong} {weak_lead_share} {weak_result_share} {mix_uplift}
+  mix:
+    title: "{weak} is {weak_lead_share} of leads but {weak_result_share} of {output}"
+    text: "Moving 30% of {weak} leads to {strong} would add about {mix_uplift}."
+
+  # Team. {team_size} {advisors_for_forecast} {advisors_required} {advisor_gap} {extra_hires}
+  team_short:
+    title: "Team too small for the forecast"
+    text: "{advisors_for_forecast} {team} needed; next month's team has {team_size}."
+  team_target:
+    title: "Hire now for the target"
+    text: "{advisors_required} {team} needed ({advisor_gap} vs {team_size}), or {extra_hires} new joiners."
+  team_ok:
+    title: "Team covers the target"
+    text: "{advisors_required} {team} needed; next month's team has {team_size}."

@@ -1,0 +1,67 @@
+# Growth Target Planner settings.
+# Change values here, not in the code. Percentages are written as decimals (0.015 = 1.5%).
+
+# Public demo: nothing is saved to disk and the made-up sample data loads on the first visit.
+# Keep false on your own computer. (Setting PLANNER_PUBLIC_DEMO=1 does the same.)
+public_demo: true
+
+labels:
+  app_name: Growth Target Planner
+  output_name: Onboardings     # can be renamed, e.g. Enrolments
+  team_label: Advisors         # can be renamed, e.g. Counsellors
+
+# What the funnel looks like. These are the defaults for the Setup step in the app.
+funnel:
+  connect_step: true       # leads are contacted first; the connect rate is an input
+  team: true               # a team (advisors) works the leads; advisors needed is an output
+  carry_over: true         # some leads convert in a later month
+
+# Lead sources in the order to show them. Sources found in the data but not listed
+# here are shown after these.
+lead_sources: [Google, Meta, Organic]
+max_lead_sources: 3
+
+# Tenure bands, from newest to most experienced.
+tenure_bands: ["0-1 M", "1-2 M", "2-3 M", "3M+"]
+new_hire_band: "0-1 M"
+
+# Next month's team: each advisor moves up one band.
+promotion:
+  "0-1 M": "1-2 M"
+  "1-2 M": "2-3 M"
+  "2-3 M": "3M+"
+  "3M+": "3M+"
+
+assumptions:
+  carry_over_pct: 0.015        # carry-over as % of leads (allowed range below)
+  carry_over_min: 0.01
+  carry_over_max: 0.03
+  carry_over_m1_share: 0.80    # share of carry-over arriving in month +1; the rest in month +2
+  target_growth: 0.20          # target = last month's onboardings x (1 + this)
+
+rate_cap: 1.0                  # rates can never go above 100%
+
+# Columns chosen automatically when the column name clearly matches one of these names.
+# Case, spaces and punctuation are ignored ("Lead Source" = "lead_source"). Anything else is asked.
+column_names:
+  lead_id: [lead id, lead no, lead number]
+  created_date: [created date, created on, lead created date, lead created on, created at]
+  source: [lead source, source]
+  connected: [connected, connect status, connection status]
+  rm_code: [rm employee code, rm code, advisor code, advisor emp code, advisor employee code]
+  converted: [converted, conversion status]
+  onboarding_date: [onboarding date, onboarded on, onboarded date]
+  advisor_code: [advisor emp code, advisor code, advisor employee code, employee code, emp code]
+  tenure: [tenure, tenure band]
+
+# Values understood automatically (case, spaces and punctuation ignored). Anything else is asked.
+# Tenure values that match a tenure band name (for example "1-2M" = "1-2 M") are also automatic.
+value_names:
+  connected:
+    Connected in the same month: [same month connected, connected, yes]
+    Connected in a later month: [future month connected, later month connected]
+    Not connected: [no, not connected]
+  converted:
+    Onboarded in the same month: [same month conversion, same month converted]
+    Onboarded in a later month: [future month conversion, later month conversion]
+    Not onboarded: [not converted, no]

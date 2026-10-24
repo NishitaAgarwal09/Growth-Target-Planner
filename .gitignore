@@ -1,0 +1,25 @@
+# Company data: never commit
+data/
+*.csv
+*.xlsx
+*.xls
+# ...except the made-up sample data, which is safe to share
+!sample_data/*.csv
+
+# Python virtual environment and caches
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+
+# Streamlit local secrets
+.streamlit/secrets.toml
+
+# Editor / OS files
+.vscode/
+.idea/
+Thumbs.db
+.DS_Store
+
+# Local tool settings
+.claude/

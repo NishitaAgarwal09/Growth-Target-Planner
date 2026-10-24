@@ -1,0 +1,6 @@
+# App settings. The colour theme is left to Streamlit, so the app follows light or dark mode.
+[client]
+toolbarMode = "minimal"
+
+[browser]
+gatherUsageStats = false
